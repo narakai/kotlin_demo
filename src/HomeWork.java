@@ -4,11 +4,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class HomeWork {
-    private static final int MIN = 1;
-    private static final int MAX = 99;
+    private static final int MIN = 11;
+    private static final int MAX = 89;
+    private static final int COL = 5;
 
     private static int right = 0;
     private static int wrong = 0;
+    private static boolean shouldPrint = false;
 
     private static class Work {
         public int firstValue;
@@ -17,20 +19,27 @@ public class HomeWork {
 
     public static void main(String[] args) {
 
-        int total = 50;
+        int total = 56;
         List<Work> wrongWorkList = new ArrayList<>();
         System.out.println("随机生成" + total + "道题， 答题开始...");
 
         for (int i = 0; i < total; i++) {
             try {
-                doPlus(i, wrongWorkList);
+                int seed = getRandom(MIN, MAX);
+                if (seed > 50) {
+                    doPlus(i, wrongWorkList);
+                } else {
+                    doMinus(i, wrongWorkList);
+                }
             } catch (Exception e) {
                 i--;
                 System.out.println("错误，需要输入数字");
             }
         }
 
-        System.out.println("Miki 总得分✌️: " + 100 / total * right);
+        if (shouldPrint) {
+            System.out.println("Miki 总得分✌️: " + 100 / total * right);
+        }
 
         correct(wrongWorkList);
 
@@ -41,17 +50,26 @@ public class HomeWork {
         work.firstValue = getRandom(MIN, MAX);
         work.secondValue = getRandom(work.firstValue + 1, MAX);
         int result = work.secondValue - work.firstValue;
-        System.out.println();
-        System.out.println("第" + (i + 1) + "道题：" + work.secondValue + " - " + work.firstValue + " = ?");
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        if (n == result) {
-            right += 1;
-            System.out.println("✅: " + right + "道题");
+
+        if (!shouldPrint) {
+            if (i % COL == 0) {
+                System.out.println(work.secondValue + "-" + work.firstValue + " =  ");
+            } else {
+                System.out.print(work.secondValue + "-" + work.firstValue + " =  ");
+            }
         } else {
-            wrongWorkList.add(work);
-            wrong += 1;
-            System.out.println("❌: " + wrong + "道题");
+            System.out.println();
+            System.out.println("第" + (i + 1) + "道题：" + work.secondValue + " - " + work.firstValue + " = ?");
+            Scanner input = new Scanner(System.in);
+            int n = input.nextInt();
+            if (n == result) {
+                right += 1;
+                System.out.println("✅: " + right + "道题");
+            } else {
+                wrongWorkList.add(work);
+                wrong += 1;
+                System.out.println("❌: " + wrong + "道题");
+            }
         }
     }
 
@@ -60,17 +78,26 @@ public class HomeWork {
         work.firstValue = getRandom(MIN, MAX);
         work.secondValue = getRandom(MIN, 100 - work.firstValue);
         int result = work.secondValue + work.firstValue;
-        System.out.println();
-        System.out.println("第" + (i + 1) + "道题：" + work.secondValue + " + " + work.firstValue + " = ?");
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        if (n == result) {
-            right += 1;
-            System.out.println("✅: " + right + "道题");
+
+        if (!shouldPrint) {
+            if (i % COL == 0) {
+                System.out.println(work.secondValue + "+" + work.firstValue + " =  ");
+            } else {
+                System.out.print(work.secondValue + "+" + work.firstValue + " =  ");
+            }
         } else {
-            wrongWorkList.add(work);
-            wrong += 1;
-            System.out.println("❌: " + wrong + "道题");
+            System.out.println();
+            System.out.println("第" + (i + 1) + "道题：" + work.secondValue + " + " + work.firstValue + " = ?");
+            Scanner input = new Scanner(System.in);
+            int n = input.nextInt();
+            if (n == result) {
+                right += 1;
+                System.out.println("✅: " + right + "道题");
+            } else {
+                wrongWorkList.add(work);
+                wrong += 1;
+                System.out.println("❌: " + wrong + "道题");
+            }
         }
     }
 
