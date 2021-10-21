@@ -47,8 +47,8 @@ public class HomeWork {
 
     private static void doMinus(int i, List<Work> wrongWorkList) {
         Work work = new Work();
-        work.firstValue = getRandom(MIN, MAX);
-        work.secondValue = getRandom(work.firstValue + 1, MAX);
+        work.firstValue = getRandom(MIN, MAX) - 1;
+        work.secondValue = getRandom(work.firstValue, MAX);
         int result = work.secondValue - work.firstValue;
 
         if (!shouldPrint) {
