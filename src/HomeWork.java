@@ -47,7 +47,7 @@ public class HomeWork {
 
     private static void doMinus(int i, List<Work> wrongWorkList) {
         Work work = new Work();
-        work.firstValue = getRandom(MIN, MAX) - 1;
+        work.firstValue = getRandom(MIN, MAX) - 2;
         work.secondValue = getRandom(work.firstValue, MAX);
         int result = work.secondValue - work.firstValue;
 
@@ -55,7 +55,7 @@ public class HomeWork {
             if (i % COL == 0) {
                 System.out.println(work.secondValue + "-" + work.firstValue + " =  ");
             } else {
-                System.out.print(work.secondValue + "-" + work.firstValue + " =  ");
+                System.out.print(work.secondValue + "-" + work.firstValue + " =     ");
             }
         } else {
             System.out.println();
@@ -83,7 +83,7 @@ public class HomeWork {
             if (i % COL == 0) {
                 System.out.println(work.secondValue + "+" + work.firstValue + " =  ");
             } else {
-                System.out.print(work.secondValue + "+" + work.firstValue + " =  ");
+                System.out.print(work.secondValue + "+" + work.firstValue + " =     ");
             }
         } else {
             System.out.println();
