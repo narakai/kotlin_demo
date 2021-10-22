@@ -55,7 +55,7 @@ public class HomeWork {
             if (i % COL == 0) {
                 System.out.println(work.secondValue + "-" + work.firstValue + " =  ");
             } else {
-                System.out.print(work.secondValue + "-" + work.firstValue + " =     ");
+                System.out.print(work.secondValue + "-" + work.firstValue + " =    ");
             }
         } else {
             System.out.println();
@@ -83,7 +83,7 @@ public class HomeWork {
             if (i % COL == 0) {
                 System.out.println(work.secondValue + "+" + work.firstValue + " =  ");
             } else {
-                System.out.print(work.secondValue + "+" + work.firstValue + " =     ");
+                System.out.print(work.secondValue + "+" + work.firstValue + " =    ");
             }
         } else {
             System.out.println();
