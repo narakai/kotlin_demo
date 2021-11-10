@@ -6,18 +6,20 @@ class InlineMain {
                 println("Before")
             }, {
                 println("After")
+            }, {
+                println("Last")
             })
 //            Lambda表达式里不允许使用return，除非整个Lambda表达式是内联函数的参数。
             return
         }
 
-        private inline fun greeting(before: () -> Unit, crossinline after: () -> Unit) {
+        private inline fun greeting(before: () -> Unit, crossinline after: () -> Unit, noinline last: () -> Unit) {
             before()
             println("Hello")
 //            after()
 
             //noinline
-//            warpAfter(after)
+            warpAfter(last)
 
             //crossinline
 //            函数类型参数间接调用
